@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -43,12 +44,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toggle.syncState();
 
+        final MediaPlayer nyanCat = MediaPlayer.create(this, R.raw.nyan);
+
+        Button playNyanCat = (Button) this.findViewById(R.id.play_nyancat_button);
+
+        playNyanCat.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                nyanCat.start();
+            }
+        });
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new MessageFragment()).commit();
 
             navigationView.setCheckedItem(R.id.nav_message);
         }
+
     }
 
     @Override
