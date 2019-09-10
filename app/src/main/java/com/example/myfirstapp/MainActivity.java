@@ -20,9 +20,14 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+//    public static MediaPlayer player;
     private DrawerLayout drawer;
+
+    Button play, pause, stop;
+    MediaPlayer player;
+    int pausePosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +49,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toggle.syncState();
 
-        final MediaPlayer nyanCat = MediaPlayer.create(this, R.raw.nyan);
+//        final MediaPlayer player = MediaPlayer.create(this, R.raw.nyan);
+//
+////        final Button playPauseNyanCat = (Button) this.findViewById(R.id.play_pause_nyancat_button);
+//
+////        player = MediaPlayer.create(MainActivity.this, R.raw.nyan);
+//
+////        playPauseNyanCat.setOnClickListener(new View.OnClickListener(){
+////            public void onClick(View view){
+////                if(player.isPlaying()){
+////                    playPauseNyanCat.setText("Play Nyancat");
+////                    player.pause();
+////                } else {
+////                    playPauseNyanCat.setText("Pause Nyancat");
+////                    player.start();
+////                }
+////
+////            }
+////        });
+////
+////        stopNyanCat.setOnClickListener(new View.OnClickListener(){
+////            public void onClick(View view){
+////                if(player.isPlaying()) {
+////                    playPauseNyanCat.setText("Play Nyancat");
+////                    player.stop();
+////                }
+////            };
+////        });
 
-        Button playNyanCat = (Button) this.findViewById(R.id.play_nyancat_button);
+        play = (Button) findViewById(R.id.play_nyancat_button);
+        pause = (Button) findViewById(R.id.pause_nyancat_button);
+        stop = (Button) findViewById(R.id.stop_nyancat_button);
 
-        playNyanCat.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                nyanCat.start();
-            }
-        });
+        play.setOnClickListener(this);
+        pause.setOnClickListener(this);
+        stop.setOnClickListener(this);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -61,6 +92,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_message);
         }
 
+    }
+
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.play_nyancat_button:
+                if(player == null){
+                    player = MediaPlayer.create(getApplicationContext(), R.raw.nyan);
+                    player.start();
+                } else if(!player.isPlaying()){
+                    player.seekTo(pausePosition);
+                    player.start();
+                }
+                break;
+            case R.id.pause_nyancat_button:
+                if(player != null){
+                    player.pause();
+                    pausePosition = player.getCurrentPosition();
+                }
+                break;
+            case R.id.stop_nyancat_button:
+                if(player != null){
+                    player.stop();
+                    player.release();
+                    player = null;
+                }
+                break;
+        }
     }
 
     @Override
