@@ -8,25 +8,30 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-//    public static MediaPlayer player;
     private DrawerLayout drawer;
 
     Button play, pause, stop;
     MediaPlayer player;
+    int audioFile;
     int pausePosition;
 
     @Override
@@ -49,33 +54,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toggle.syncState();
 
-//        final MediaPlayer player = MediaPlayer.create(this, R.raw.nyan);
-//
-////        final Button playPauseNyanCat = (Button) this.findViewById(R.id.play_pause_nyancat_button);
-//
-////        player = MediaPlayer.create(MainActivity.this, R.raw.nyan);
-//
-////        playPauseNyanCat.setOnClickListener(new View.OnClickListener(){
-////            public void onClick(View view){
-////                if(player.isPlaying()){
-////                    playPauseNyanCat.setText("Play Nyancat");
-////                    player.pause();
-////                } else {
-////                    playPauseNyanCat.setText("Pause Nyancat");
-////                    player.start();
-////                }
-////
-////            }
-////        });
-////
-////        stopNyanCat.setOnClickListener(new View.OnClickListener(){
-////            public void onClick(View view){
-////                if(player.isPlaying()) {
-////                    playPauseNyanCat.setText("Play Nyancat");
-////                    player.stop();
-////                }
-////            };
-////        });
+        Spinner spinner = (Spinner) findViewById(R.id.file_selector);
+        spinner.setOnItemSelectedListener(this);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.audio_file_options, android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
 
         play = (Button) findViewById(R.id.play_nyancat_button);
         pause = (Button) findViewById(R.id.pause_nyancat_button);
@@ -94,12 +84,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        TextView overwriteMe = (TextView) findViewById(R.id.overwrite);
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+        Resources res = getResources();
+        int soundId = res.getIdentifier(parent.getItemAtPosition(pos).toString().toLowerCase(), "raw", getPackageName());
+
+        audioFile = soundId;
+        overwriteMe.setText(parent.getItemAtPosition(pos).toString());
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
+
     @Override
     public void onClick(View view){
         switch (view.getId()){
             case R.id.play_nyancat_button:
                 if(player == null){
-                    player = MediaPlayer.create(getApplicationContext(), R.raw.nyan);
+                    player = MediaPlayer.create(getApplicationContext(), audioFile);
                     player.start();
                 } else if(!player.isPlaying()){
                     player.seekTo(pausePosition);
