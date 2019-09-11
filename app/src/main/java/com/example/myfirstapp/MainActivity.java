@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private DrawerLayout drawer;
 
-    Button play, pause, stop;
+    Button play, pause, loop, stop;
     MediaPlayer player;
     int audioFile;
     int pausePosition;
@@ -69,10 +69,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         play = (Button) findViewById(R.id.play_nyancat_button);
         pause = (Button) findViewById(R.id.pause_nyancat_button);
+        loop = (Button) findViewById(R.id.loop_button);
         stop = (Button) findViewById(R.id.stop_nyancat_button);
 
         play.setOnClickListener(this);
         pause.setOnClickListener(this);
+        loop.setOnClickListener(this);
         stop.setOnClickListener(this);
 
         if (savedInstanceState == null) {
@@ -118,9 +120,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     pausePosition = player.getCurrentPosition();
                 }
                 break;
+            case R.id.loop_button:
+                if(player != null){
+                    player.setLooping(true);
+                }
+                break;
             case R.id.stop_nyancat_button:
                 if(player != null){
                     player.stop();
+                    player.setLooping(false);
                     player.release();
                     player = null;
                 }

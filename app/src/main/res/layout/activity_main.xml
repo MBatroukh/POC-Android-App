@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/button"
             android:layout_centerHorizontal="true"
-            android:text="Play NyanCat" />
+            android:text="Play" />
 
         <Button
             android:id="@+id/pause_nyancat_button"
@@ -77,15 +77,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/play_nyancat_button"
             android:layout_centerHorizontal="true"
-            android:text="Pause NyanCat" />
+            android:text="Pause" />
+
+        <Button
+            android:id="@+id/loop_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pause_nyancat_button"
+            android:layout_centerHorizontal="true"
+            android:text="Loop" />
 
         <Button
             android:id="@+id/stop_nyancat_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/pause_nyancat_button"
+            android:layout_below="@id/loop_button"
             android:layout_centerHorizontal="true"
-            android:text="Stop NyanCat" />
+            android:text="Stop" />
 
         <FrameLayout
             android:id="@+id/fragment_container"
