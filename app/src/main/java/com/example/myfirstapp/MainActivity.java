@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer.addDrawerListener(toggle);
 
+        // Removes text from ActionBar
+        getSupportActionBar().setTitle("");
+
         toggle.syncState();
 
         Spinner spinner = (Spinner) findViewById(R.id.file_selector);
