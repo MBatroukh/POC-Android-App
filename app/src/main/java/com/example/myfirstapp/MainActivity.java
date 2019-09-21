@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,18 +19,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private DrawerLayout drawer;
 
-    Button play, pause, loop, stop;
+    Button play, pause, loop, stop, gradientSwitcher;
     MediaPlayer player;
     int audioFile;
     int pausePosition;
@@ -70,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
+        gradientSwitcher = (Button) findViewById(R.id.gradient_switcher);
+        gradientSwitcher.setOnClickListener(this);
+
         play = (Button) findViewById(R.id.play_nyancat_button);
         pause = (Button) findViewById(R.id.pause_nyancat_button);
         loop = (Button) findViewById(R.id.loop_button);
@@ -108,6 +115,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onClick(View view){
         switch (view.getId()){
+            case R.id.gradient_switcher:
+                LinearLayout landingPage = (LinearLayout) findViewById(R.id.landing_background);
+                Random randomGenerator = new Random();
+                int bgImage = randomGenerator.nextInt(6) + 1;
+                String imageName = "gradient_" + bgImage;
+                int imagePath = getResources().getIdentifier(imageName , "drawable", getPackageName());
+                landingPage.setBackgroundResource(imagePath);
+                break;
             case R.id.play_nyancat_button:
                 if(player == null){
                     player = MediaPlayer.create(getApplicationContext(), audioFile);

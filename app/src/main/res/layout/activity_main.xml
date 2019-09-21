@@ -10,6 +10,7 @@
     tools:openDrawer="start">
 
     <LinearLayout
+        android:id="@+id/landing_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -65,10 +66,17 @@
             android:text="Will Be overwritten"/>
 
         <Button
+            android:id="@+id/gradient_switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Randomize Gradient" />
+
+        <Button
             android:id="@+id/play_nyancat_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button"
+            android:layout_below="@id/gradient_switcher"
             android:layout_centerHorizontal="true"
             android:text="Play" />
 
