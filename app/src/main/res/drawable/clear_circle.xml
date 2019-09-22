@@ -3,7 +3,7 @@
     android:color="@color/ripple_material_dark">
     <item>
         <shape android:shape="oval">
-            <solid android:color="#50FFFFFF" />
+            <solid android:color="#10FFFFFF" />
             <size android:width="50dp" android:height="50dp" />
             <corners android:radius="25dp"/>
         </shape>

@@ -9,16 +9,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -33,7 +36,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private DrawerLayout drawer;
 
-    Button play, pause, loop, stop, gradientSwitcher;
+    Button gradientSwitcher;
+    ImageButton play, pause, loop, stop;
     MediaPlayer player;
     int audioFile;
     int pausePosition;
@@ -77,15 +81,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gradientSwitcher = (Button) findViewById(R.id.gradient_switcher);
         gradientSwitcher.setOnClickListener(this);
 
-        play = (Button) findViewById(R.id.play_audio_button);
-        pause = (Button) findViewById(R.id.pause_audio_button);
-        loop = (Button) findViewById(R.id.loop_audio_button);
-        stop = (Button) findViewById(R.id.stop_audio_button);
+        play = (ImageButton) findViewById(R.id.play_audio_button);
+        pause = (ImageButton) findViewById(R.id.pause_audio_button);
+        loop = (ImageButton) findViewById(R.id.loop_audio_button);
+        stop = (ImageButton) findViewById(R.id.stop_audio_button);
 
         play.setOnClickListener(this);
         pause.setOnClickListener(this);
         loop.setOnClickListener(this);
         stop.setOnClickListener(this);
+
+        pause.setVisibility(View.GONE);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -127,20 +133,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(player == null){
                     player = MediaPlayer.create(getApplicationContext(), audioFile);
                     player.start();
+                    play.setVisibility(View.GONE);
+                    pause.setVisibility(View.VISIBLE);
+//                    play.setBackgroundResource(R.drawable.circle);
                 } else if(!player.isPlaying()){
                     player.seekTo(pausePosition);
                     player.start();
+                    play.setVisibility(View.GONE);
+                    pause.setVisibility(View.VISIBLE);
+//                    play.setBackgroundResource(R.drawable.circle);
                 }
                 break;
             case R.id.pause_audio_button:
                 if(player != null){
                     player.pause();
                     pausePosition = player.getCurrentPosition();
+                    pause.setVisibility(View.GONE);
+                    play.setVisibility(View.VISIBLE);
                 }
                 break;
             case R.id.loop_audio_button:
                 if(player != null){
                     player.setLooping(true);
+                    loop.setBackgroundResource(R.drawable.circle);
                 }
                 break;
             case R.id.stop_audio_button:
@@ -149,6 +164,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     player.setLooping(false);
                     player.release();
                     player = null;
+                    TypedValue typedValue = new TypedValue();
+                    getTheme().resolveAttribute(R.attr.selectableItemBackground, typedValue, true);
+                    loop.setBackgroundResource(typedValue.resourceId);
+                    play.setBackgroundResource(typedValue.resourceId);
+                    pause.setVisibility(View.GONE);
+                    play.setVisibility(View.VISIBLE);
                 }
                 break;
         }
