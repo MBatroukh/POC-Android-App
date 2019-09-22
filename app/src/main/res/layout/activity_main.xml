@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
         android:id="@+id/landing_background"
@@ -54,16 +54,15 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/editText" />
 
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
         <Spinner
             android:id="@+id/file_selector"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/overwrite"
-            android:text="Will Be overwritten"/>
 
         <Button
             android:id="@+id/gradient_switcher"
@@ -73,7 +72,7 @@
             android:text="Randomize Gradient" />
 
         <Button
-            android:id="@+id/play_nyancat_button"
+            android:id="@+id/play_audio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/gradient_switcher"
@@ -81,33 +80,79 @@
             android:text="Play" />
 
         <Button
-            android:id="@+id/pause_nyancat_button"
+            android:id="@+id/pause_audio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/play_nyancat_button"
+            android:layout_below="@id/play_audio_button"
             android:layout_centerHorizontal="true"
             android:text="Pause" />
 
         <Button
-            android:id="@+id/loop_button"
+            android:id="@+id/loop_audio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/pause_nyancat_button"
+            android:layout_below="@id/pause_audio_button"
             android:layout_centerHorizontal="true"
             android:text="Loop" />
 
         <Button
-            android:id="@+id/stop_nyancat_button"
+            android:id="@+id/stop_audio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/loop_button"
+            android:layout_below="@id/loop_audio_button"
             android:layout_centerHorizontal="true"
             android:text="Stop" />
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/overwrite"
+            android:text="Will Be overwritten"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gobold"
+            android:textSize="30dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageButton
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:maxWidth="75dp"
+                android:src="@drawable/ic_stop_icon"
+                android:contentDescription="@string/stop_audio"
+                android:tint="@color/white"
+                android:background="@drawable/circle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+
+            <ImageButton
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:maxWidth="125dp"
+                android:src="@drawable/ic_play_icon"
+                android:contentDescription="@string/play_audio"
+                android:tint="@color/white"
+                android:background="@drawable/circle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+
+            <ImageButton
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:maxWidth="75dp"
+                android:src="@drawable/ic_loop_icon"
+                android:contentDescription="@string/loop_audio"
+                android:tint="@color/white"
+                android:background="@drawable/circle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+        </LinearLayout>
 
     </LinearLayout>
 

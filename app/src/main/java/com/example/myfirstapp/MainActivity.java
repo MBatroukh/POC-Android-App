@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gradientSwitcher = (Button) findViewById(R.id.gradient_switcher);
         gradientSwitcher.setOnClickListener(this);
 
-        play = (Button) findViewById(R.id.play_nyancat_button);
-        pause = (Button) findViewById(R.id.pause_nyancat_button);
-        loop = (Button) findViewById(R.id.loop_button);
-        stop = (Button) findViewById(R.id.stop_nyancat_button);
+        play = (Button) findViewById(R.id.play_audio_button);
+        pause = (Button) findViewById(R.id.pause_audio_button);
+        loop = (Button) findViewById(R.id.loop_audio_button);
+        stop = (Button) findViewById(R.id.stop_audio_button);
 
         play.setOnClickListener(this);
         pause.setOnClickListener(this);
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 int imagePath = getResources().getIdentifier(imageName , "drawable", getPackageName());
                 landingPage.setBackgroundResource(imagePath);
                 break;
-            case R.id.play_nyancat_button:
+            case R.id.play_audio_button:
                 if(player == null){
                     player = MediaPlayer.create(getApplicationContext(), audioFile);
                     player.start();
@@ -132,18 +132,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     player.start();
                 }
                 break;
-            case R.id.pause_nyancat_button:
+            case R.id.pause_audio_button:
                 if(player != null){
                     player.pause();
                     pausePosition = player.getCurrentPosition();
                 }
                 break;
-            case R.id.loop_button:
+            case R.id.loop_audio_button:
                 if(player != null){
                     player.setLooping(true);
                 }
                 break;
-            case R.id.stop_nyancat_button:
+            case R.id.stop_audio_button:
                 if(player != null){
                     player.stop();
                     player.setLooping(false);

@@ -9,4 +9,8 @@
     <string name="hello_blank_fragment2">Hello blank fragment #2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="stop_audio">Stop audio playback</string>
+    <string name="play_audio">Start audio playback</string>
+    <string name="pause_audio">Pause audio playback</string>
+    <string name="loop_audio">Loop audio track</string>
 </resources>
