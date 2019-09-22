@@ -143,6 +143,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     pause.setVisibility(View.VISIBLE);
 //                    play.setBackgroundResource(R.drawable.circle);
                 }
+                player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        pause.setVisibility(View.GONE);
+                        play.setVisibility(View.VISIBLE);
+                        player.stop();
+                        player = null;
+                    }
+                });
                 break;
             case R.id.pause_audio_button:
                 if(player != null){
@@ -154,8 +162,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.loop_audio_button:
                 if(player != null){
-                    player.setLooping(true);
-                    loop.setBackgroundResource(R.drawable.circle);
+                    if(player.isLooping()){
+                        player.setLooping(false);
+                        TypedValue typedValue = new TypedValue();
+                        getTheme().resolveAttribute(R.attr.selectableItemBackground, typedValue, true);
+                        loop.setBackgroundResource(typedValue.resourceId);
+                    } else {
+                        player.setLooping(true);
+                        loop.setBackgroundResource(R.drawable.circle);
+                    }
                 }
                 break;
             case R.id.stop_audio_button:
