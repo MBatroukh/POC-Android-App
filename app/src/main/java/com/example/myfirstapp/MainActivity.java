@@ -1,6 +1,7 @@
 package com.example.myfirstapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,6 +37,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private DrawerLayout drawer;
+    private Window window;
 
     Button gradientSwitcher;
     ImageButton play, pause, loop, stop;
@@ -127,6 +130,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 int bgImage = randomGenerator.nextInt(6) + 1;
                 String imageName = "gradient_" + bgImage;
                 int imagePath = getResources().getIdentifier(imageName , "drawable", getPackageName());
+//                int colorPath = getResources().getIdentifier(imageName , "colors", getPackageName());
+//                int colorPath = getResources().getColor(R.color.gradient_4);
                 landingPage.setBackgroundResource(imagePath);
                 break;
             case R.id.play_audio_button:
@@ -247,20 +252,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /** Called when the user taps the Send button */
-    public void sendMessage(View view) {
-        // Do something in response to button
-        // Intent takes two arguments, first is context, second is where to deliver the intent
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        // startActivity() method starts an instance
-
-        //* if no content fire alert modal */
-        if(message.isEmpty()){
-            openDialog();
-        } else {
-            startActivity(intent);
-        }
-    }
+//    public void sendMessage(View view) {
+//        // Do something in response to button
+//        // Intent takes two arguments, first is context, second is where to deliver the intent
+//        Intent intent = new Intent(this, DisplayMessageActivity.class);
+//        EditText editText = (EditText) findViewById(R.id.editText);
+//        String message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        // startActivity() method starts an instance
+//
+//        //* if no content fire alert modal */
+//        if(message.isEmpty()){
+//            openDialog();
+//        } else {
+//            startActivity(intent);
+//        }
+//    }
 }

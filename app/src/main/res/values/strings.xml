@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My First App</string>
+    <string name="app_name">Eid Takbeer</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="error_message">Please enter a valid string</string>
