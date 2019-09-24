@@ -3,4 +3,17 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gradient_1_end">#4389A2</color>
+    <color name="gradient_1_start">#5C258D</color>
+    <color name="gradient_2_end">#71B280</color>
+    <color name="gradient_2_start">#134E5E</color>
+    <color name="gradient_3_end">#5FC3E4</color>
+    <color name="gradient_3_start">#E55D87</color>
+    <color name="gradient_4_end">#B5AC49</color>
+    <color name="gradient_4_start">#3CA55C</color>
+    <color name="gradient_5_end">#12c2e9</color>
+    <color name="gradient_5_start">#f64f59</color>
+    <color name="gradient_6_end">#8A2387</color>
+    <color name="gradient_6_start">#B1531B</color>
 </resources>

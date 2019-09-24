@@ -7,57 +7,141 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
+        android:id="@+id/landing_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/gradient_1">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="@android:color/transparent"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+<!--        <EditText-->
+<!--            android:id="@+id/editText"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="@string/edit_message"-->
+<!--            android:inputType="textPersonName"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/button"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginRight="16dp"-->
+<!--            android:onClick="sendMessage"-->
+<!--            android:text="@string/button_send"-->
+<!--            app:layout_constraintBaseline_toBaselineOf="@+id/editText"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/editText" />-->
 
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:hint="@string/edit_message"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toStartOf="@+id/button"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/file_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:onClick="sendMessage"
-                android:text="@string/button_send"
-                app:layout_constraintBaseline_toBaselineOf="@+id/editText"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/editText" />  
-        </FrameLayout>
+<!--        <Button-->
+<!--            android:id="@+id/gradient_switcher"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:text="Randomize Gradient" />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/overwrite"
+            android:text="Will Be overwritten"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gobold"
+            android:textSize="30dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/stop_audio_button"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:maxWidth="75dp"
+                android:src="@drawable/ic_stop_icon"
+                android:contentDescription="@string/stop_audio"
+                android:tint="@color/white"
+                android:background="?android:selectableItemBackground"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:bottomRightRadius="50dp"
+                android:bottomLeftRadius="50dp"
+                android:topLeftRadius="50dp"
+                android:topRightRadius="50dp"
+                />
+
+            <ImageButton
+                android:id="@+id/play_audio_button"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:maxWidth="125dp"
+                android:src="@drawable/ic_play_icon"
+                android:contentDescription="@string/play_audio"
+                android:tint="@color/white"
+                android:background="?android:selectableItemBackground"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+
+            <ImageButton
+                android:id="@+id/pause_audio_button"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:maxWidth="125dp"
+                android:src="@drawable/ic_pause_icon"
+                android:contentDescription="@string/pause_audio"
+                android:tint="@color/white"
+                android:background="?android:selectableItemBackground"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <ImageButton
+                android:id="@+id/loop_audio_button"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:maxWidth="75dp"
+                android:src="@drawable/ic_loop_icon"
+                android:contentDescription="@string/loop_audio"
+                android:tint="@color/white"
+                android:background="?android:selectableItemBackground"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
