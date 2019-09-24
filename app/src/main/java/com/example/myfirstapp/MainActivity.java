@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,18 +36,28 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private DrawerLayout drawer;
-    private Window window;
 
-    Button gradientSwitcher;
     ImageButton play, pause, loop, stop;
     MediaPlayer player;
     int audioFile;
     int pausePosition;
+    Random randomGenerator = new Random();
+    int identifier = randomGenerator.nextInt(6) + 1;
+    String bg = "gradient_" + identifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int themePath = getResources().getIdentifier(bg, "style", getPackageName());
+        setTheme(themePath);
+//        setTheme(R.style.gradient_4);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Select Random Gradient on Load
+        LinearLayout landingPage = (LinearLayout) findViewById(R.id.landing_background);
+
+        int imagePath = getResources().getIdentifier(bg , "drawable", getPackageName());
+        landingPage.setBackgroundResource(imagePath);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -81,8 +90,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        gradientSwitcher = (Button) findViewById(R.id.gradient_switcher);
-        gradientSwitcher.setOnClickListener(this);
+//        gradientSwitcher = (Button) findViewById(R.id.gradient_switcher);
+//        gradientSwitcher.setOnClickListener(this);
 
         play = (ImageButton) findViewById(R.id.play_audio_button);
         pause = (ImageButton) findViewById(R.id.pause_audio_button);
@@ -124,29 +133,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.gradient_switcher:
-                LinearLayout landingPage = (LinearLayout) findViewById(R.id.landing_background);
-                Random randomGenerator = new Random();
-                int bgImage = randomGenerator.nextInt(6) + 1;
-                String imageName = "gradient_" + bgImage;
-                int imagePath = getResources().getIdentifier(imageName , "drawable", getPackageName());
-//                int colorPath = getResources().getIdentifier(imageName , "colors", getPackageName());
-//                int colorPath = getResources().getColor(R.color.gradient_4);
-                landingPage.setBackgroundResource(imagePath);
-                break;
             case R.id.play_audio_button:
                 if(player == null){
                     player = MediaPlayer.create(getApplicationContext(), audioFile);
                     player.start();
                     play.setVisibility(View.GONE);
                     pause.setVisibility(View.VISIBLE);
-//                    play.setBackgroundResource(R.drawable.circle);
                 } else if(!player.isPlaying()){
                     player.seekTo(pausePosition);
                     player.start();
                     play.setVisibility(View.GONE);
                     pause.setVisibility(View.VISIBLE);
-//                    play.setBackgroundResource(R.drawable.circle);
                 }
                 player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     public void onCompletion(MediaPlayer mediaPlayer) {

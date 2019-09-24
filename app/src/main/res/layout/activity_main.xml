@@ -65,12 +65,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/gradient_switcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Randomize Gradient" />
+<!--        <Button-->
+<!--            android:id="@+id/gradient_switcher"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:text="Randomize Gradient" />-->
 
         <TextView
             android:layout_width="match_parent"

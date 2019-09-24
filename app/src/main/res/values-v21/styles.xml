@@ -7,4 +7,46 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="gradient_1">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/gradient_1_end</item>
+        <item name="android:navigationBarColor">@color/gradient_1_start</item>
+    </style>
+
+    <style name="gradient_2">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/gradient_2_end</item>
+        <item name="android:navigationBarColor">@color/gradient_2_start</item>
+    </style>
+
+    <style name="gradient_3">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/gradient_3_end</item>
+        <item name="android:navigationBarColor">@color/gradient_3_start</item>
+    </style>
+
+    <style name="gradient_4">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/gradient_4_end</item>
+        <item name="android:navigationBarColor">@color/gradient_4_start</item>
+    </style>
+
+    <style name="gradient_5">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/gradient_5_end</item>
+        <item name="android:navigationBarColor">@color/gradient_5_start</item>
+    </style>
+
+    <style name="gradient_6">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/gradient_6_end</item>
+        <item name="android:navigationBarColor">@color/gradient_6_start</item>
+    </style>
+
 </resources>
