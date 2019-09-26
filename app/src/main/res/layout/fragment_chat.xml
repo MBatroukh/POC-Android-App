@@ -4,13 +4,22 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/text_wrap"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Visualizer #2"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:id="@+id/play_nyancat_text"
-        />
+        android:requiresFadingEdge="vertical"
+        android:fadingEdgeLength="100dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/takbeer_arabic"
+            android:textSize="42dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/arabic_takbeer"
+            android:textColor="@color/white"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"/>
+    </ScrollView>
 
 </RelativeLayout>

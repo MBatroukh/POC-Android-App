@@ -16,6 +16,10 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
             android:title="Profile" />
+
+        <item
+            android:id="@+id/text_version"
+            android:title="Read the Takbeer" />
     </group>
 
     <item android:title="Communicate">
