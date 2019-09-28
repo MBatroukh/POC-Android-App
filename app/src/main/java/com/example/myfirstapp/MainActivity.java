@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -105,14 +106,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         pause.setVisibility(View.GONE);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new MessageFragment()).commit();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.cardViewer);
+        viewPager.setAdapter(new CustomPagerAdapter(this));
 
-            navigationView.setCheckedItem(R.id.nav_message);
-        }
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                    new VisualizerFragment()).commit();
+//
+//            navigationView.setCheckedItem(R.id.nav_message);
+//        }
+
 
     }
+
+//    @Override
+//    public void onScrollChanged() {
+//        if (!scrollView.canScrollVertically(1)) {
+//            // bottom of scroll view
+//        }
+//        if (!scrollView.canScrollVertically(-1)) {
+//            // top of scroll view
+//        }
+//    }
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
@@ -203,16 +218,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch(menuItem.getItemId()){
             case R.id.nav_message:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MessageFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new VisualizerFragment()).commit();
                 break;
             case R.id.nav_chat:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ChatFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new ArabicFragment()).commit();
                 break;
             case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new TransliterationFragment()).commit();
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
@@ -233,6 +248,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+//    @Override
+//    public void onScrollChanged() {
+//        if (!scrollView.canScrollVertically(1)) {
+//            // bottom of scroll view
+//        }
+//        if (!scrollView.canScrollVertically(-1)) {
+//            // top of scroll view
+//        }
+//    }
 
     @Override
     public void onBackPressed() {

@@ -14,12 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/takbeer_arabic"
-            android:textSize="42dp"
+            android:textSize="34dp"
             android:layout_centerInParent="true"
             android:id="@+id/arabic_takbeer"
             android:textColor="@color/white"
             android:paddingRight="15dp"
-            android:paddingLeft="15dp"/>
+            android:paddingLeft="15dp"
+            android:lineSpacingExtra="5dp" />
     </ScrollView>
 
 </RelativeLayout>
