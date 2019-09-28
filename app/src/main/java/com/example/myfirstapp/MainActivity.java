@@ -41,23 +41,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     MediaPlayer player;
     int audioFile;
     int pausePosition;
-    Random randomGenerator = new Random();
-    int identifier = randomGenerator.nextInt(6) + 1;
-    String bg = "gradient_" + identifier;
+    Random rand = new Random();
+    int identifier = rand.nextInt(6) + 1;
+    String drawableName = "gradient_" + identifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int themePath = getResources().getIdentifier(bg, "style", getPackageName());
+        int themePath = getResources().getIdentifier(drawableName, "style", getPackageName());
         setTheme(themePath);
-//        setTheme(R.style.gradient_4);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Select Random Gradient on Load
         LinearLayout landingPage = (LinearLayout) findViewById(R.id.landing_background);
 
-        int imagePath = getResources().getIdentifier(bg , "drawable", getPackageName());
-        landingPage.setBackgroundResource(imagePath);
+        int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName());
+        landingPage.setBackgroundResource(drawablePath);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
