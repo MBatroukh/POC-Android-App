@@ -22,10 +22,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int themePath = getResources().getIdentifier(drawableName, "style", getPackageName());
+//        int themePath = R.style.gradient_black;
         setTheme(themePath);
 
         super.onCreate(savedInstanceState);
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         LinearLayout landingPage = (LinearLayout) findViewById(R.id.landing_background);
 
         int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName());
+//        int drawablePath = R.drawable.gradient_black;
         landingPage.setBackgroundResource(drawablePath);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -217,23 +221,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent i = new Intent(Intent.ACTION_VIEW);
 
         switch(menuItem.getItemId()){
-            case R.id.nav_message:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                        new VisualizerFragment()).commit();
-                break;
-            case R.id.nav_chat:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                        new ArabicFragment()).commit();
-                break;
-            case R.id.nav_profile:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                        new TransliterationFragment()).commit();
-                break;
-            case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_send:
-                Toast.makeText(this, "Sending...", Toast.LENGTH_SHORT).show();
+//            case R.id.nav_message:
+////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+////                        new VisualizerFragment()).commit();
+//                break;
+//            case R.id.nav_chat:
+////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+////                        new ArabicFragment()).commit();
+//                break;
+//            case R.id.nav_profile:
+////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+////                        new TransliterationFragment()).commit();
+//                break;
+//            case R.id.nav_share:
+//                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.nav_send:
+//                Toast.makeText(this, "Sending...", Toast.LENGTH_SHORT).show();
+//                break;
+            case R.id.theme_selector:
+//                MenuItem thisMenuItem = navigationView.getMenu().findItem(R.id.theme_selector); // This is the menu item that contains your switch
+                Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.dark_mode_switch);
+                drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            Toast.makeText(MainActivity.this, "Switch turned on", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "Switch turned off", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
             case R.id.nav_github:
                 i.setData(Uri.parse(gitHubRepoUrl));

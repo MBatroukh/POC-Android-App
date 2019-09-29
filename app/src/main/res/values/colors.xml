@@ -16,4 +16,6 @@
     <color name="gradient_5_start">#f64f59</color>
     <color name="gradient_6_end">#8A2387</color>
     <color name="gradient_6_start">#B1531B</color>
+    <color name="gradient_black_end">#2c292d</color>
+    <color name="gradient_black_start">#000000</color>
 </resources>

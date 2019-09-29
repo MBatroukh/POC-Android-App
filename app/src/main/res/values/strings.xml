@@ -16,6 +16,8 @@
     <string name="arabic">Arabic</string>
     <string name="transliteration">Transliteration</string>
     <string name="visualizer">Visualizer</string>
+    <string name="font_size">Font Size</string>
+    <string name="dark_mode">Dark Mode</string>
     <string name="takbeer_arabic">اللّهُ أكبر اللّهُ أكبر اللّهُ أكبر\nلا إلَهَ الا اللّه\nاللّهُ أكبر اللّهُ اكبر\nو لِلّه الحمد\nاللّهُ أكبرُ كَبيِرَا\nوَالحَمدُ لِلّهِ كَثِيرا\nوَ سُبحَان اللّهِ بُكرَةً وَأصْيِلا\nلا إلَهَ الا اللّه\nصَدَقَ وَعدَه\nوَنَصَرَ عبده\nوأعزَ جُنَده\nوَهزم الأحْزَابَ وحْدَه\nلا إلَهَ الا اللّه\nوَلا نَعبُد الا أياه\nمُخلِصِّينَ لَهُ الدّيِنَ\nوَلوْ كَرِهَ الكَافِروُن\nاللّهمَ صَلِّ على سيْدنَا مُحَمد\nوَعَلى آلِ سيْدنَا مُحَمد\nوَعَلى اصْحَابِ سيْدنَا مُحَمد\nوَعَلى أنصَارِ سيْدنَا مُحَمد\nوَعَلى أزوَاجِ سيْدنَا مُحَمد\nوَعَلى ذُرِّيَةِ سيْدنَا مُحَمد\nوَ سَلّم تَسْلِيماَ كَثّيرا</string>
     <string name="takbeer_transliteration">Allahu Akbar, Allahu Akbar, Allahu Akbar\nLa illaha il Allah\nAllahu Akbar, Allahu Akbar\nWaliLahil Hamd\nAllahu Akbaru Kabeera\nWal-HamduliLahi katheera\nwa Subhan Allahi bukratan wa aseela\nLa illaha il Allah\nSadaqa wa\'Dah\nWa nasara abDa\nWa a\'azza jundahu\nWa hazamal-ahzaaba wahdah/nLa illaha il Allah\nWa laa na\'budu illa iyyah\nMukhlesseena laHud-deena\nwalaw karehal-Kafiroon\nAllahumma salli ala sayyedna Muhammad\nWa ala aalie sayyedna Muhammad\nWa ala as-haabie sayyedna Muhammad\nWa ala ansari sayyedna Muhammad\nWa ala azwajie sayyedna Muhammad\nWa ala dhurriyati sayyedna Muhammad\nWa sallim tasleeman katheera</string>
 </resources>
