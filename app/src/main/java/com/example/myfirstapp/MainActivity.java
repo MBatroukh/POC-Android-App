@@ -240,15 +240,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                Toast.makeText(this, "Sending...", Toast.LENGTH_SHORT).show();
 //                break;
             case R.id.theme_selector:
-//                MenuItem thisMenuItem = navigationView.getMenu().findItem(R.id.theme_selector); // This is the menu item that contains your switch
+                final LinearLayout landingPage = findViewById(R.id.landing_background);
+                final int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName());
                 Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.dark_mode_switch);
                 drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked) {
                             Toast.makeText(MainActivity.this, "Switch turned on", Toast.LENGTH_SHORT).show();
+                            landingPage.setBackgroundResource(R.drawable.gradient_black);
                         } else {
                             Toast.makeText(MainActivity.this, "Switch turned off", Toast.LENGTH_SHORT).show();
+                            landingPage.setBackgroundResource(drawablePath);
                         }
                     }
                 });
