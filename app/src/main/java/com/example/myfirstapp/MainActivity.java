@@ -219,30 +219,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String donateUrl = "https://www.paypal.com/ca/home";
 
         Intent i = new Intent(Intent.ACTION_VIEW);
+        final LinearLayout landingPage = findViewById(R.id.landing_background); //Mine
+        final int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName()); //Mine
+        Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.dark_mode_switch);
 
         switch(menuItem.getItemId()){
-//            case R.id.nav_message:
-////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-////                        new VisualizerFragment()).commit();
-//                break;
-//            case R.id.nav_chat:
-////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-////                        new ArabicFragment()).commit();
-//                break;
-//            case R.id.nav_profile:
-////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-////                        new TransliterationFragment()).commit();
-//                break;
-//            case R.id.nav_share:
-//                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
-//                break;
-//            case R.id.nav_send:
-//                Toast.makeText(this, "Sending...", Toast.LENGTH_SHORT).show();
-//                break;
             case R.id.theme_selector:
-                final LinearLayout landingPage = findViewById(R.id.landing_background);
-                final int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName());
-                Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.dark_mode_switch);
+                if(!drawerSwitch.isChecked()){
+                    drawerSwitch.setChecked(true);
+                } else {
+                    drawerSwitch.setChecked(false);
+                }
                 drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -255,6 +242,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     }
                 });
+
                 break;
             case R.id.nav_github:
                 i.setData(Uri.parse(gitHubRepoUrl));
