@@ -83,17 +83,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         Spinner spinner = (Spinner) findViewById(R.id.file_selector);
-        spinner.setOnItemSelectedListener(this);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.audio_file_options, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.audio_file_options,
+                R.layout.color_spinner_layout
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
+
 
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
 
 //        gradientSwitcher = (Button) findViewById(R.id.gradient_switcher);
 //        gradientSwitcher.setOnClickListener(this);
@@ -119,8 +125,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //
 //            navigationView.setCheckedItem(R.id.nav_message);
 //        }
-
-
     }
 
 //    @Override
@@ -135,14 +139,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
-        TextView overwriteMe = (TextView) findViewById(R.id.overwrite);
+//        TextView overwriteMe = (TextView) findViewById(R.id.overwrite);
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
         Resources res = getResources();
         int soundId = res.getIdentifier(parent.getItemAtPosition(pos).toString().toLowerCase(), "raw", getPackageName());
 
         audioFile = soundId;
-        overwriteMe.setText(parent.getItemAtPosition(pos).toString());
+//        overwriteMe.setText(parent.getItemAtPosition(pos).toString());
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -211,6 +215,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public void onSwitchChange(){
+        Switch drawerSwitch = (Switch) findViewById(R.id.dark_mode_switch);
+        final LinearLayout landingPage = findViewById(R.id.landing_background); //Mine
+        final int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName()); //Mine
+        drawerSwitch.setChecked(!drawerSwitch.isChecked());
+        if(drawerSwitch.isChecked()){
+            landingPage.setBackgroundResource(R.drawable.gradient_black);
+        } else {
+            landingPage.setBackgroundResource(drawablePath);
+        }
+        drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    landingPage.setBackgroundResource(R.drawable.gradient_black);
+                } else {
+                    landingPage.setBackgroundResource(drawablePath);
+                }
+            }
+        });
+        Toast.makeText(MainActivity.this, "Function Executed " + drawerSwitch.isChecked(), Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -219,30 +246,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String donateUrl = "https://www.paypal.com/ca/home";
 
         Intent i = new Intent(Intent.ACTION_VIEW);
-        final LinearLayout landingPage = findViewById(R.id.landing_background); //Mine
-        final int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName()); //Mine
-        Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.dark_mode_switch);
 
         switch(menuItem.getItemId()){
             case R.id.theme_selector:
-                if(!drawerSwitch.isChecked()){
-                    drawerSwitch.setChecked(true);
-                } else {
-                    drawerSwitch.setChecked(false);
-                }
-                drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
-                            Toast.makeText(MainActivity.this, "Switch turned on", Toast.LENGTH_SHORT).show();
-                            landingPage.setBackgroundResource(R.drawable.gradient_black);
-                        } else {
-                            Toast.makeText(MainActivity.this, "Switch turned off", Toast.LENGTH_SHORT).show();
-                            landingPage.setBackgroundResource(drawablePath);
-                        }
-                    }
-                });
-
+                onSwitchChange();
                 break;
             case R.id.nav_github:
                 i.setData(Uri.parse(gitHubRepoUrl));
