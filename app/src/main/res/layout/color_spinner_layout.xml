@@ -4,10 +4,8 @@
     android:layout_height="wrap_content"
     android:textSize="30dp"
     android:text="Testing"
-    android:gravity="center"
     android:textAlignment="center"
     android:fontFamily="@font/gobold"
     android:textColor="@color/white"
     >
-
 </CheckedTextView>
