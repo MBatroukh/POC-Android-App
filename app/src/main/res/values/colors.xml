@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryDark">#004D40</color>
+    <color name="colorAccent">#880E4F</color>
     <color name="white">#FFFFFF</color>
-    <color name="gradient_1_end">#4389A2</color>
-    <color name="gradient_1_start">#5C258D</color>
-    <color name="gradient_2_end">#71B280</color>
-    <color name="gradient_2_start">#134E5E</color>
-    <color name="gradient_3_end">#5FC3E4</color>
-    <color name="gradient_3_start">#E55D87</color>
-    <color name="gradient_4_end">#B5AC49</color>
-    <color name="gradient_4_start">#3CA55C</color>
-    <color name="gradient_5_end">#12c2e9</color>
-    <color name="gradient_5_start">#f64f59</color>
-    <color name="gradient_6_end">#8A2387</color>
-    <color name="gradient_6_start">#B1531B</color>
-    <color name="gradient_black_end">#2c292d</color>
-    <color name="gradient_black_start">#000000</color>
+    <color name="gradient_1_end">#1d1c3a</color>
+    <color name="gradient_1_start">#191517</color>
+    <color name="gradient_2_end">#39323f</color>
+    <color name="gradient_2_start">#000000</color>
+    <color name="gradient_3_end">#1b343e</color>
+    <color name="gradient_3_start">#091418</color>
+    <color name="gradient_4_end">#20344b</color>
+    <color name="gradient_4_start">#0a0e17</color>
+    <color name="gradient_5_end">#2c292d</color>
+    <color name="gradient_5_start">#000000</color>
 </resources>

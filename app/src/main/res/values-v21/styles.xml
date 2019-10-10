@@ -11,7 +11,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/gradient_1_start</item>
-        <item name="colorPrimaryDark">#341550</item>
         <item name="colorAccent">@color/gradient_1_end</item>
         <item name="android:colorControlHighlight">@color/gradient_1_start</item>
         <item name="android:statusBarColor">@color/gradient_1_end</item>
@@ -22,7 +21,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/gradient_2_start</item>
-        <item name="colorPrimaryDark">#06181d</item>
         <item name="colorAccent">@color/gradient_2_end</item>
         <item name="android:colorControlHighlight">@color/gradient_2_start</item>
         <item name="android:statusBarColor">@color/gradient_2_end</item>
@@ -33,7 +31,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/gradient_3_start</item>
-        <item name="colorPrimaryDark">#dd2a61</item>
         <item name="colorAccent">@color/gradient_3_end</item>
         <item name="android:colorControlHighlight">@color/gradient_3_start</item>
         <item name="android:statusBarColor">@color/gradient_3_end</item>
@@ -44,10 +41,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/gradient_4_start</item>
-        <item name="colorPrimaryDark">#174024</item>
         <item name="colorAccent">@color/gradient_4_end</item>
         <item name="android:colorControlHighlight">@color/gradient_4_start</item>
-        <item name="android:statusBarColor"></item>
+        <item name="android:statusBarColor">@color/gradient_4_end</item>
         <item name="android:navigationBarColor">@color/gradient_4_start</item>
     </style>
 
@@ -55,33 +51,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/gradient_5_start</item>
-        <item name="colorPrimaryDark">#a30812</item>
         <item name="colorAccent">@color/gradient_5_end</item>
         <item name="android:colorControlHighlight">@color/gradient_5_start</item>
         <item name="android:statusBarColor">@color/gradient_5_end</item>
         <item name="android:navigationBarColor">@color/gradient_5_start</item>
-    </style>
-
-    <style name="gradient_6">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/gradient_6_start</item>
-        <item name="colorPrimaryDark">#6f3411</item>
-        <item name="colorAccent">@color/gradient_6_end</item>
-        <item name="android:colorControlHighlight">@color/gradient_6_start</item>
-        <item name="android:statusBarColor">@color/gradient_6_end</item>
-        <item name="android:navigationBarColor">@color/gradient_6_start</item>
-    </style>
-
-    <style name="gradient_black">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/gradient_black_start</item>
-        <item name="colorPrimaryDark">@color/gradient_black_start</item>
-        <item name="colorAccent">@color/gradient_black_end</item>
-        <item name="android:colorControlHighlight">@color/gradient_black_start</item>
-        <item name="android:statusBarColor">@color/gradient_black_end</item>
-        <item name="android:navigationBarColor">@color/gradient_black_start</item>
     </style>
 
 </resources>

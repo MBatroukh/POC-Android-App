@@ -45,13 +45,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int audioFile;
     int pausePosition;
     Random rand = new Random();
-    int identifier = rand.nextInt(6) + 1;
+    int identifier = rand.nextInt(5) + 1;
     String drawableName = "gradient_" + identifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int themePath = getResources().getIdentifier(drawableName, "style", getPackageName());
-//        int themePath = R.style.gradient_black;
         setTheme(themePath);
 
         super.onCreate(savedInstanceState);
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         LinearLayout landingPage = (LinearLayout) findViewById(R.id.landing_background);
 
         int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName());
-//        int drawablePath = R.drawable.gradient_black;
         landingPage.setBackgroundResource(drawablePath);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -83,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         Spinner spinner = (Spinner) findViewById(R.id.file_selector);
+        spinner.setOnItemSelectedListener(this);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -98,8 +97,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(this);
 
 //        gradientSwitcher = (Button) findViewById(R.id.gradient_switcher);
 //        gradientSwitcher.setOnClickListener(this);
@@ -215,29 +212,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void onSwitchChange(){
-        Switch drawerSwitch = (Switch) findViewById(R.id.dark_mode_switch);
-        final LinearLayout landingPage = findViewById(R.id.landing_background); //Mine
-        final int drawablePath = getResources().getIdentifier(drawableName , "drawable", getPackageName()); //Mine
-        drawerSwitch.setChecked(!drawerSwitch.isChecked());
-        if(drawerSwitch.isChecked()){
-            landingPage.setBackgroundResource(R.drawable.gradient_black);
-        } else {
-            landingPage.setBackgroundResource(drawablePath);
-        }
-        drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    landingPage.setBackgroundResource(R.drawable.gradient_black);
-                } else {
-                    landingPage.setBackgroundResource(drawablePath);
-                }
-            }
-        });
-        Toast.makeText(MainActivity.this, "Function Executed " + drawerSwitch.isChecked(), Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -248,9 +222,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent i = new Intent(Intent.ACTION_VIEW);
 
         switch(menuItem.getItemId()){
-            case R.id.theme_selector:
-                onSwitchChange();
-                break;
             case R.id.nav_github:
                 i.setData(Uri.parse(gitHubRepoUrl));
                 startActivity(i);

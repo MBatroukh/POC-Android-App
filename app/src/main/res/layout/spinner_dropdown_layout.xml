@@ -6,6 +6,6 @@
     android:paddingTop="10dp"
     android:textSize="30dp"
     android:fontFamily="@font/gobold"
-    android:textColor="@color/gradient_black_start">
+    android:textColor="@color/gradient_5_start">
 
 </TextView>
