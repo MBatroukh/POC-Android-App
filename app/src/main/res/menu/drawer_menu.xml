@@ -4,19 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
-    <item android:title="Settings">
-        <menu>
-            <item
-                android:id="@+id/theme_selector"
-                app:actionLayout="@layout/toggle_switch"
-                android:title="@string/dark_mode"
-                />
-
-            <item
-                android:id="@+id/font_size_selector"
-                android:title="@string/font_size" />
-        </menu>
-    </item>
     <item android:title="External Links">
         <menu>
             <item
