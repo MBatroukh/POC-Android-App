@@ -119,29 +119,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ViewPager viewPager = (ViewPager) findViewById(R.id.cardViewer);
         viewPager.setAdapter(new CustomPagerAdapter(this));
 
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                    new VisualizerFragment()).commit();
-//
-//            navigationView.setCheckedItem(R.id.nav_message);
-//        }
     }
 
-//    @Override
-//    public void onScrollChanged() {
-//        if (!scrollView.canScrollVertically(1)) {
-//            // bottom of scroll view
-//        }
-//        if (!scrollView.canScrollVertically(-1)) {
-//            // top of scroll view
-//        }
-//    }
 
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 //        TextView overwriteMe = (TextView) findViewById(R.id.overwrite);
+
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        if(player != null){
+            player.stop();
+            player.setLooping(false);
+            player.release();
+            player = null;
+        }
+//        loop.setBackgroundResource(typedValue.resourceId);
+//        play.setBackgroundResource(typedValue.resourceId);
+        pause.setVisibility(View.GONE);
+        play.setVisibility(View.VISIBLE);
+
         Resources res = getResources();
         int soundId = res.getIdentifier(parent.getItemAtPosition(pos).toString().toLowerCase(), "raw", getPackageName());
 
