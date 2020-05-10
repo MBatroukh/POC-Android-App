@@ -16,3 +16,4 @@ public class VisualizerFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_visualizer, container, false);
     }
 }
+  

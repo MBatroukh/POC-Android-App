@@ -11,13 +11,13 @@
         android:requiresFadingEdge="vertical"
         android:fadingEdgeLength="100dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Visualizer #1"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:layout_centerInParent="true" />
+
+        <com.chibde.visualizer.LineVisualizer
+            android:id="@+id/lineVisualizer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
 
     </ScrollView>
 
