@@ -7,4 +7,4 @@
 - [ ] Address branding
   - [ ] Icon
   - [ ] Splashscreen
-- [ ] Add support for Google Cast
+- [ ] Add support for Google Cast (Phase 2)
