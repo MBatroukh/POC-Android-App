@@ -2,7 +2,7 @@
 
 ## to-do
 - [ ] Fix darkmode toggle
-- [ ] Add visualizer
+- [ ] Add visualizer (Phase 2 (refer to branch `reverting_color`))
 - [ ] Add real audio files
 - [ ] Address branding
   - [ ] Icon
