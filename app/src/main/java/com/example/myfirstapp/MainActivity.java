@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
@@ -16,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +32,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.chibde.visualizer.LineVisualizer;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Random rand = new Random();
     int identifier = rand.nextInt(5) + 1;
     String drawableName = "gradient_" + identifier;
+    LineVisualizer lineVisualizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,29 +120,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ViewPager viewPager = (ViewPager) findViewById(R.id.cardViewer);
         viewPager.setAdapter(new CustomPagerAdapter(this));
 
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                    new VisualizerFragment()).commit();
+        lineVisualizer = findViewById(R.id.lineVisualizer);
+
+        if (lineVisualizer != null) {
+            Log.e("FLAG", "NOT NULL");
+        } else {
+            Log.e("FLAG", "IS NULL");
+        }
+
+        // set custom color to the line.
+//        lineVisualizer.setColor(ContextCompat.getColor(this, R.color.white));
 //
-//            navigationView.setCheckedItem(R.id.nav_message);
-//        }
+        // set the line with for the visualizer between 1-10 default 1.
+//        lineVisualizer.setStrokeWidth(5);
+
     }
 
-//    @Override
-//    public void onScrollChanged() {
-//        if (!scrollView.canScrollVertically(1)) {
-//            // bottom of scroll view
-//        }
-//        if (!scrollView.canScrollVertically(-1)) {
-//            // top of scroll view
-//        }
-//    }
 
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 //        TextView overwriteMe = (TextView) findViewById(R.id.overwrite);
+
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        if(player != null){
+            player.stop();
+            player.setLooping(false);
+            player.release();
+            player = null;
+        }
+//        loop.setBackgroundResource(typedValue.resourceId);
+//        play.setBackgroundResource(typedValue.resourceId);
+        pause.setVisibility(View.GONE);
+        play.setVisibility(View.VISIBLE);
+
         Resources res = getResources();
         int soundId = res.getIdentifier(parent.getItemAtPosition(pos).toString().toLowerCase(), "raw", getPackageName());
 
@@ -157,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(player == null){
                     player = MediaPlayer.create(getApplicationContext(), audioFile);
                     player.start();
+//                    lineVisualizer.setPlayer(player.getAudioSessionId());
                     play.setVisibility(View.GONE);
                     pause.setVisibility(View.VISIBLE);
                 } else if(!player.isPlaying()){
